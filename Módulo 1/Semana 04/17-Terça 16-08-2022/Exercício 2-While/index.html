@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista dinâmica</title>
+  </head>
+  <body>
+    <ul></ul>
+
+    <script>
+      let pensamento = prompt("Qual foi o pensamento?");
+
+      while (pensamento !== "fim") {
+        adicionarPensamento(pensamento);
+        pensamento = prompt("Qual foi o pensamento?");
+      }
+
+      function adicionarPensamento(pensamento) {
+        const elemento = document.querySelector("ul");
+        elemento.innerHTML = elemento.innerHTML + `<li>${pensamento}</li>`;
+      }
+    </script>
+  </body>
+</html>

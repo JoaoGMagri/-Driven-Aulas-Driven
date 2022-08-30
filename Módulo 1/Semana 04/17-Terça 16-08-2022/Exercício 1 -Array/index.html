@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="aumentarLista()">Adicionar</button>
+    <div class="container"></div>
+
+    <script>
+      const lista = [1];
+
+      function colocarListaNaTela() {
+        const container = document.querySelector(".container");
+        container.innerHTML = lista;
+      }
+
+      function aumentarLista() {
+        lista.push(lista[lista.length - 1] * 2);
+
+        colocarListaNaTela();
+      }
+
+      colocarListaNaTela();
+    </script>
+  </body>
+</html>

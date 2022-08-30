@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/minion.css" />
+    <title>Super Minions</title>
+  </head>
+  <body>
+    <div class="minions">
+      <minion class="minion1" onclick="toggleSuperman('.minion1')"></minion>
+      <minion class="minion2" onclick="toggleSuperman('.minion2')"></minion>
+      <minion class="minion3" onclick="toggleSuperman('.minion3')"></minion>
+      <minion class="minion4" onclick="toggleSuperman('.minion4')"></minion>
+      <minion class="minion5" onclick="toggleSuperman('.minion5')"></minion>
+    </div>
+
+    <script>
+      function toggleSuperman(num) {
+        const selecionado = document.querySelector(".superman");
+        const minion = document.querySelector(num);
+
+        minion.classList.toggle("superman");
+      }
+    </script>
+
+    <!-- esse script permite o uso da tag minion -->
+    <script src="js/minion.js"></script>
+  </body>
+</html>

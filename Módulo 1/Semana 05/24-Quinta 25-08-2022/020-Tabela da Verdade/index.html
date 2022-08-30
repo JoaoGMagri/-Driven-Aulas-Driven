@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Tabela da Verdade</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        transition: all ease 0.2s;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        flex-direction: column;
+      }
+
+      td,
+      th {
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+      }
+
+      th {
+        padding: 10px 14px;
+      }
+
+      td {
+        color: white;
+        padding: 6px;
+        text-align: center;
+      }
+
+      tr:first-child {
+        background-color: #ddd;
+      }
+
+      .t {
+        background: #0f0;
+        color: black;
+      }
+
+      .f {
+        background: red;
+      }
+
+      .answer {
+        cursor: pointer;
+        background-color: #fff;
+      }
+
+      .answer.t {
+        background-color: rgba(0, 255, 0, 0.9);
+        color: black;
+      }
+
+      .answer.f {
+        background-color: rgba(255, 0, 0, 0.9);
+      }
+
+      .answer:hover {
+        filter: brightness(0.9);
+      }
+
+      .verificar {
+        background-color: rgb(20, 180, 70);
+        cursor: pointer;
+        padding: 12px;
+      }
+
+      .verificar:hover {
+        background-color: rgb(16, 144, 56);
+      }
+    </style>
+
+    <script>
+      function alternarResposta(elemento) {
+        if (elemento.classList.contains("t")) {
+          elemento.innerHTML = "false";
+          elemento.classList.remove("t");
+          elemento.classList.add("f");
+        } else if (elemento.classList.contains("f")) {
+          elemento.innerHTML = "";
+          elemento.classList.remove("f");
+        } else {
+          elemento.innerHTML = "true";
+          elemento.classList.add("t");
+        }
+      }
+
+      let respostas = [];
+
+      function primeira(a, b, c) {
+        return a && b && c;
+      }
+
+      function segunda(a, b, c) {
+        return a || b || c;
+      }
+
+      function terceira(a, b, c) {
+        return !a || !b || c;
+      }
+
+      function quarta(a, b, c) {
+        return a && (b || c);
+      }
+
+      function quinta(a, b, c) {
+        return a || (b && !c);
+      }
+
+      function verificarRespostas() {
+        respostas = [[], [], [], [], []];
+
+        const rows = [...document.querySelectorAll("tr")].slice(1);
+
+        for (const row of rows) {
+          const columns = [...row.querySelectorAll("td")].slice(3);
+          let coluna = 0;
+
+          for (const column of columns) {
+            respostas[coluna].push(
+              column.classList.contains("t")
+                ? true
+                : column.classList.contains("f")
+                ? false
+                : null
+            );
+            coluna++;
+          }
+        }
+
+        let valores = [
+          [false, false, false],
+          [false, false, true],
+          [false, true, false],
+          [false, true, true],
+          [true, false, false],
+          [true, false, true],
+          [true, true, false],
+          [true, true, true]
+        ];
+
+        let validacoes = [primeira, segunda, terceira, quarta, quinta];
+
+        for (let i = 0; i < valores.length; i++) {
+          for (let j = 0; j < respostas.length; j++) {
+            const esperado = validacoes[j](
+              valores[i][0],
+              valores[i][1],
+              valores[i][2]
+            );
+            const resposta = respostas[j][i];
+
+            const linha = document.querySelectorAll("tr")[i + 1];
+            const elemento = linha.querySelectorAll("td")[3 + j];
+
+            if (resposta !== null && esperado === resposta) {
+              elemento.innerHTML = "Correto!";
+            } else {
+              elemento.innerHTML = "Incorreto!";
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Tabela da Verdade</h1>
+
+    <table>
+      <tr>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>A && B && C</th>
+        <th>A || B || C</th>
+        <th>!A || !B || C</th>
+        <th>A && (B || C)</th>
+        <th>A || (B && !C)</th>
+      </tr>
+      <tr>
+        <td class="f">false</td>
+        <td class="f">false</td>
+        <td class="f">false</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td class="f">false</td>
+        <td class="f">false</td>
+        <td class="t">true</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td class="f">false</td>
+        <td class="t">true</td>
+        <td class="f">false</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td class="f">false</td>
+        <td class="t">true</td>
+        <td class="t">true</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td class="t">true</td>
+        <td class="f">false</td>
+        <td class="f">false</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td class="t">true</td>
+        <td class="f">false</td>
+        <td class="t">true</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td class="t">true</td>
+        <td class="t">true</td>
+        <td class="f">false</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td class="t">true</td>
+        <td class="t">true</td>
+        <td class="t">true</td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+        <td class="answer" onclick="alternarResposta(this)"></td>
+      </tr>
+      <tr>
+        <td colspan="8" class="verificar" onclick="verificarRespostas()">
+          Verificar Respostas
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
