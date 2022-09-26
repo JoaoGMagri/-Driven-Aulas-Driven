@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poker 100</title>
+
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="topo">
+      <img src="assets/image/download (1).png" alt="Poker 100" class="logo" />
+      <p class="aviso">POKER 100 é um site exclusivo para maiores de idade</p>
+      <button onclick="perguntarIdade()" class="botao-entrar">Entrar</button>
+    </div>
+
+    <div class="conteudo">
+      <div class="selecionar-jogo escondido">
+        <div class="secao">
+          <div class="titulo">Tipo de Jogo</div>
+          <div class="opcoes jogo">
+            <button class="texas" onclick="selecionarJogo('texas')">Texas Hold'em</button>
+            <button class="omaha" onclick="selecionarJogo('omaha')">Omaha High</button>
+            <button class="five" onclick="selecionarJogo('five')">Five Card Draw</button>
+          </div>
+        </div>
+        <div class="secao qtd-jogadores">
+          <div class="titulo">Quantidade de jogadores</div>
+          <div class="opcoes">
+            <button onclick="selecionarQtdeJogadores(this)">5</button>
+            <button onclick="selecionarQtdeJogadores(this)">9</button>
+          </div>
+        </div>
+        <div class="secao">
+          <div class="opcoes">
+            <button class="botao-continuar selecionado" onclick="jogar()">Continuar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="loading-overlay escondido">
+        <div class="container">
+          <p class="mensagem-iniciando">INICIANDO POKER 100</p>
+          <img src="assets/image/download.gif" alt="Carregando" />
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

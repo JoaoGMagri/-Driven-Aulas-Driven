@@ -1,0 +1,109 @@
+body {
+  font-family: Arial;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-left: 15px;
+}
+
+h2 {
+  color: black;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+img {
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+/* Menu do topo começo */
+.menu-topo {
+  background-color: gray;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  background-color: green;
+  width: 100px;
+  height: 40px;
+}
+
+.busca {
+  background-color: blue;
+  width: 500px;
+  height: 40px;
+}
+
+.login {
+  background-color: yellow;
+  width: 100px;
+  height: 40px;
+}
+/* Menu do topo fim */
+
+/* Página a baixo do menu superior começo */
+.principal {
+  background-color: purple;
+  display: flex;
+}
+
+/* Menu da lateal começo */
+.menu-lateral {
+  background-color: white;
+}
+
+.menu-lateral div {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-lateral div:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.menu-lateral img {
+  width: 30px;
+}
+/* Menu da lateal fim */
+
+/* Página a baixo do menu superior fim */
+
+.italico {
+  font-style: italic;
+}
+.titulo-video {
+  color: black;
+}
+
+.subtitulo-video {
+  color: grey;
+}
+
+.container {
+  background-color: gray;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.caixa-video {
+  background-color: red;
+  width: 250px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}

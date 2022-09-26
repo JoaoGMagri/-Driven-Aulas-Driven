@@ -1,0 +1,20 @@
+h1, h2 {
+
+    color: dimgray;
+    text-align: center;
+
+}
+
+h3 {
+
+    color: steelblue;
+    margin-bottom: 0px;
+
+}
+
+.bordarHorizontal {
+
+    background-color: steelblue;
+    width: 100%;
+    height: 2px;
+}
